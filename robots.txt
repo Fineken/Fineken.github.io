@@ -1,0 +1,29 @@
+User-agent: *
+Allow: /
+
+# Блокируем служебные директории
+Disallow: /admin/
+Disallow: /config/
+Disallow: /logs/
+Disallow: /data/
+Disallow: /.git/
+Disallow: /backup/
+
+# Блокируем временные файлы
+Disallow: /*.tmp
+Disallow: /*.bak
+Disallow: /*.old
+
+# Разрешаем публичные файлы
+Allow: /assets/
+Allow: /favicon.ico
+Allow: /index.html
+
+# Карта сайта
+Sitemap: https://pr-cy.ru/sitemap.xml
+
+# Задержка между запросами
+Crawl-delay: 1
+
+# Время посещения
+Visit-time: 0100-2300

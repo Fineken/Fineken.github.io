@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Страница не найдена | Данил Золотарев</title>
+    <meta name="description" content="Страница не найдена. Вернитесь на главную страницу портфолио Данила Золотарева">
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            500: '#3b82f6',
+                            600: '#2563eb'
+                        },
+                        dark: {
+                            bg: '#0f172a',
+                            surface: '#1e293b'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+    </style>
+</head>
+<body class="bg-white dark:bg-dark-bg text-gray-900 dark:text-white min-h-screen flex items-center justify-center">
+    <div class="text-center px-4 max-w-2xl">
+        <div class="mb-8">
+            <div class="text-9xl font-bold text-primary-500 mb-4">404</div>
+            <h1 class="text-4xl font-bold mb-4">Страница не найдена</h1>
+            <p class="text-xl text-gray-600 dark:text-gray-300 mb-8">
+                К сожалению, запрашиваемая страница не существует или была перемещена
+            </p>
+        </div>
+        
+        <div class="mb-8">
+            <div class="bg-gray-50 dark:bg-dark-surface rounded-xl p-6 mb-6">
+                <h2 class="text-xl font-semibold mb-4">Что можно сделать:</h2>
+                <ul class="text-left space-y-2">
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>Проверить правильность URL</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>Вернуться на главную страницу</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>Использовать навигационное меню</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>Связаться со мной, если проблема повторяется</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/" 
+               class="bg-primary-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary-600 transition-colors inline-flex items-center justify-center">
+                <i class="fas fa-home mr-2"></i>Главная страница
+            </a>
+            <a href="mailto:danilzolotarev1980@gmail.com" 
+               class="border border-primary-500 text-primary-500 px-8 py-3 rounded-lg font-semibold hover:bg-primary-500 hover:text-white transition-colors inline-flex items-center justify-center">
+                <i class="fas fa-envelope mr-2"></i>Связаться
+            </a>
+        </div>
+        
+        <div class="mt-8 text-sm text-gray-500 dark:text-gray-400">
+            <p>Ошибка 404 - Not Found</p>
+            <p class="mt-2">© 2025 Данил Золотарев | DevOps Engineer</p>
+        </div>
+    </div>
+
+</body>
+</html>
