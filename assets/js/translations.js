@@ -32,7 +32,7 @@ const translations = {
         'hero.greeting': 'Hi, I\'m',
         'hero.subtitle': 'Automating infrastructure, optimizing deployments, and building scalable cloud solutions',
         'hero.cta': 'Get in touch',
-        'hero.download_cv': 'Download CV',
+        'hero.download_cv': '',
         'hero.contact_me': 'Contact me',
         
         // About секция
