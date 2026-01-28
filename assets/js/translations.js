@@ -154,7 +154,7 @@ const translations = {
         // Кнопки
         'button.learn-more': 'Learn More',
         'button.view-project': 'View Project',
-        'button.download-cv': 'Download CV',
+        'button.download-cv': '',
         
         // Общие
         'common.years-experience': 'Years Experience',
