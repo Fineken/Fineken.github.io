@@ -32,7 +32,7 @@ const translations = {
         'hero.greeting': 'Hi, I\'m',
         'hero.subtitle': 'Automating infrastructure, optimizing deployments, and building scalable cloud solutions',
         'hero.cta': 'Get in touch',
-        'hero.download_cv': '',
+        'hero.download_cv': 'Download CV',
         'hero.contact_me': 'Contact me',
         
         // About секция
@@ -422,29 +422,50 @@ class I18n {
     }
     
     translatePage() {
-        // Переводим все элементы с data-i18n атрибутом
         const elements = document.querySelectorAll('[data-i18n]');
         elements.forEach(element => {
             const key = element.getAttribute('data-i18n');
             const translation = this.translate(key);
-            
-            // Проверяем есть ли data-i18n-attr для перевода атрибутов
+
+            // Перевод атрибута (например, content у meta)
             const attrKey = element.getAttribute('data-i18n-attr');
             if (attrKey) {
                 element.setAttribute(attrKey, translation);
+                return;
+            }
+
+            // Элемент без дочерних тегов — просто заменяем textContent
+            if (element.children.length === 0) {
+                element.textContent = translation;
+                return;
+            }
+
+            // Элемент содержит дочерние теги (иконки и т.п.) —
+            // ищем текстовые узлы, чтобы не затронуть иконки
+            const textNodes = Array.from(element.childNodes)
+                .filter(node => node.nodeType === Node.TEXT_NODE);
+
+            if (textNodes.length === 0) {
+                // Нет текстовых узлов — ставим textContent (иконки потеряются,
+                // но это крайний случай)
+                element.textContent = translation;
+                return;
+            }
+
+            // Ищем «содержательный» узел (не только пробелы)
+            const contentNode = textNodes.find(n => n.textContent.trim() !== '');
+
+            if (contentNode) {
+                // Заменяем содержательный узел переводом,
+                // остальные текстовые узлы обнуляем → не будет дублирования
+                contentNode.textContent = translation;
+                textNodes.forEach(n => { if (n !== contentNode) n.textContent = ''; });
             } else {
-                // Для элементов с дочерними элементами (например, span внутри a)
-                if (element.children.length === 0) {
-                    element.textContent = translation;
-                } else {
-                    // Если есть дочерние элементы, ищем текстовые узлы
-                    const textNodes = Array.from(element.childNodes).filter(node => node.nodeType === Node.TEXT_NODE);
-                    if (textNodes.length > 0) {
-                        textNodes[0].textContent = translation;
-                    } else {
-                        element.textContent = translation;
-                    }
-                }
+                // Все узлы — пробельные (например, иконка — единственное содержимое).
+                // Ставим перевод в ПОСЛЕДНИЙ узел (после иконки), остальные чистим
+                textNodes.forEach((n, i) => {
+                    n.textContent = i === textNodes.length - 1 ? translation : '';
+                });
             }
         });
     }
